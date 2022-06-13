@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Item = ({product}) => {
     
-    const {id, img,price,title/*,stock*/}=product;
+    //const {id, img, price,title/*,stock*/}=product;
 
     return (
     <>
@@ -18,15 +18,15 @@ const Item = ({product}) => {
     >
     
         <Card.Img
-            //alt={title}
-            src={img}
+            alt={product.title}
+            src={product.img}
             variant="top"
             //width="100%"
         />
         <Card.Header>
         <Card.Title 
             >
-            {title}
+            {product.title}
         </Card.Title>
         </Card.Header>
         <Card.Body>
@@ -35,14 +35,14 @@ const Item = ({product}) => {
             className="mb-2 text-muted"
             
         >
-            ${price}
+            ${product.price}
         </Card.Subtitle>
     
         
         </Card.Body>
         <Card.Footer>
         <Card.Text>
-        <Link to={`/Item/${id}`}><Button variant="primary">Ver Detalles</Button></Link>
+        <Link to={`/Item/${product.id}`}><Button variant="primary">Ver Detalles</Button></Link>
         </Card.Text>
         {/* <ItemCount stock={stock}/> */}
         </Card.Footer>

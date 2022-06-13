@@ -1,7 +1,7 @@
 import ItemCount from './ItemCount';
 import {Button,Card,Row,Col} from 'react-bootstrap'
-import React,{useState }from'react';
-//import { CartContext } from '../context/CartContext';
+import React,{useState, useContext }from'react';
+import { CartContext } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 
 // Alert,
@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom';
 
 const ItemDetail = ({product}) => {
 
-    const {img,price,title,description,stock}=product;
+    //const {img,price,title,description,stock}=product;
 
-    //const { addItem } = useContext(CartContext); 
+    const { addItem } = useContext(CartContext); 
 
     const [itemCount, setItemCount] =useState(0);
 
@@ -21,7 +21,7 @@ const ItemDetail = ({product}) => {
         alert(`cargó ${qty} productos`)
         
         setItemCount(qty);
-        //addItem(product,qty);
+        addItem(product,qty);
 
             //harcoreo el array
         // let $cartList =JSON.parse(sessionStorage.getItem('cartList'))||[];
@@ -50,13 +50,13 @@ const ItemDetail = ({product}) => {
         <Card.Header>
             <Card.Title 
             className="card-title">
-                {title}
+                {product.title}
             </Card.Title>
         </Card.Header>
         <Card.Img
             //alt={title}
             variant="top"
-            src={img}
+            src={product.img}
             //width="80%"
         />
         </Card>
@@ -70,7 +70,7 @@ const ItemDetail = ({product}) => {
         
             <Card.Header>
                 <Card.Text>
-                    {description}
+                    {product.description}
                 </Card.Text>
             </Card.Header>
             <Card.Body>
@@ -78,11 +78,11 @@ const ItemDetail = ({product}) => {
                     className="mb-2 text-muted card-subtitle"
                     
                 >
-                    ${price} ARS
+                    ${product.price} ARS
                 </Card.Subtitle>
                 <Card.Text
                 className="card-text">
-                    Stock de {stock} unidades.
+                    Stock de {product.stock} unidades.
                 </Card.Text>
             </Card.Body>
             <Card.Footer>
@@ -94,8 +94,8 @@ const ItemDetail = ({product}) => {
                 </Alert> */}
                 {
                 itemCount===0
-                ?<ItemCount stock={stock}  onAdd={onAdd}/>
-                :<Link href='/Cart' ><Button variant="danger" onClick={(e) => {e.stopPropagation()}} outline>Checkout</Button></Link>
+                ?<ItemCount stock={product.stock}  onAdd={onAdd}/>
+                :<Link to='/Cart' ><Button variant="danger" onClick={(e) => {e.stopPropagation()}} outline>Checkout</Button></Link>
                 }
                 
             </Card.Footer>
