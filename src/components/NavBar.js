@@ -1,23 +1,39 @@
 import {Navbar,Container,Nav,} from 'react-bootstrap';
 
+import { Link } from 'react-router-dom';
+
 
 const NavBar = () =>{
     return(
         <>
     <Navbar bg="dark" variant="dark" collapseOnSelect expand="lg"  >
         <Container>
-            <Navbar.Brand href="/">
+            <Link to='/' style={{textDecoration: "none"}}>
+            <Navbar.Brand >
                 <span className= "text-danger">Y</span>ou 
                 <span className="text-danger">F</span>reaky 
                 <span className= "text-danger">S</span>hop
             </Navbar.Brand>
+            </Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
-                    <Nav.Link href="/category/Helmet">Helmets</Nav.Link>
-                    <Nav.Link href="/category/Figura">Figura</Nav.Link>
-                    <Nav.Link href="/category/Funko-Pop">Funko-Pops</Nav.Link>
-                    <Nav.Link href="/category/Comic">Comics</Nav.Link>
+                    <Nav.Item>
+                    {/* <Link to="/">Helmets</Link> */}
+                    <Link to="/category/Helmet">Helmets</Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                    {/* <Link to="/">Figura</Link> */}
+                    <Link to="/category/Figura">Figura</Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                    {/* <Link to="/">Funko-Pops</Link> */}
+                    <Link to="/category/Funko-Pop">Funko-Pops</Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                    {/* <Link to="/">Comics</Link> */}
+                    <Link to="/category/Comic">Comics</Link>
+                    </Nav.Item>
                 </Nav>
             </Navbar.Collapse>
         </Container>
